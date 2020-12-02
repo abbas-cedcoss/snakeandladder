@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0', shrink-to-fit=no">
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+	<meta content="utf-8" http-equiv="encoding">
+	<title>Snake&Ladder</title>
+	<style type="text/css">
+		.btn1-decor{
+			border-radius: 20px 5px 20px;
+			background-color: #922e2e;
+			color: white;
+			padding: 8px;
+			margin-top: 10px;
+			outline: 0;
+			
+		}
+			.btnReload-decor{
+			border-radius: 0px 20px 0px;
+			background-color: #922e2e;
+			color: white;
+			padding: 8px;
+			margin-top: 10px
+			border:none!important;
+			outline: 0;
+		}
+		.btn1-decor:hover{
+			background-color: white;
+			color: black !important;
+			border: 1px solid black;
+			box-shadow: 0 0 5px black;
+
+		}
+		.btnReload-decor:hover{
+			background-color: white;
+			color: black !important;
+			border: 1px solid black;
+			box-shadow: 0 0 5px black;
+
+		}
+		#outerDiv{
+			display: grid;
+			grid-template-columns: repeat(10, 1fr);
+		}
+		.redBlock
+		{
+			background-color: #922e2e;
+			color: white;
+		}
+		img
+		{
+			padding-top: 5px;
+			border: none;
+		}
+		div
+		{
+			box-shadow: 0 0 10px #922e2e;
+
+		}
+
+	</style>
+	<script type="text/javascript">
+        var new_pos = 1;
+        var new_posP2 = 0; //for player two
+		function diceG()
+		{
+
+			var ran_no = Math.floor((Math.random()*4)+1); //For random num generation
+			alert("Dice value: "+ran_no);
+			var c_pos = document.getElementsByClassName("divs");
+			c_pos[new_pos-1].style.visibility="hidden";
+			var updateNewPos = new_pos-1; //To remove img from existing pos
+			c_pos[updateNewPos].src=""; //To remove img from existing pos
+			new_pos = new_pos+ran_no;
+			if(new_pos==100){
+				alert("you won!");
+			}
+			else if(new_pos>100)
+			{
+				new_pos=new_pos- ran_no;
+				c_pos[new_pos-1].src ="red.png"
+			}
+
+			else{
+
+			c_pos[new_pos-1].src = "red.png";
+			c_pos[new_pos-1].style.visibility="visible";
+			console.log("rand: "+ran_no);
+			console.log("New_pos:"+new_pos);
+				if(new_pos==18 || new_pos==37||new_pos==57||new_pos==71||new_pos==79||new_pos==98)
+				{
+					var moveBack = new_pos - ran_no;
+					console.log("Moved to :"+moveBack);
+					c_pos[new_pos-1].src="snake.png";
+					c_pos[moveBack-1].src="red.png"
+					c_pos[moveBack-1].style.visibility="visible";
+					alert("Moved back to: "+moveBack);
+					new_pos=moveBack;
+				}
+				else if(new_pos==12||new_pos==24|| new_pos==30||new_pos==43||new_pos==66||new_pos==85)
+				{
+					
+					var v = new_pos+ran_no;
+					console.log("some"+v);
+					c_pos[(new_pos+ran_no)-1].src="red.png";
+					c_pos[(new_pos+ran_no)-1].style.visibility="visible";
+					c_pos[new_pos-1].src="ladder.png";
+					alert("Moved forward to: "+v+"th position");
+					new_pos=v;
+				}
+			}
+		}
+		function reloadGame() 
+        {
+            window.location.reload();           
+        }
+	</script>
+</head>
+<body class="bgImage">
+	
+	<center>
+
+	<div id="outerDiv">
+		<div class="redBlock">
+			<img src="start.png" class="divs" width="48px" height="48px" >
+		</div>
+		<div>
+			2
+			<img style="visibility: hidden;" src="" class="divs" width="48px" height="48px" >
+		</div>
+		<div class="redBlock">
+			3
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px">
+		</div>
+		<div>
+			4
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px" >
+		</div>
+		<div class="redBlock">
+			5
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px" >
+		</div>
+		<div>6
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="6">
+		</div>
+		<div class="redBlock">7
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="7">
+		</div>
+		<div>8
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="8">
+		</div>
+		<div class="redBlock">9
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="9">
+		</div>
+		<div>10
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="10">
+		</div>
+
+		<div>11
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="11" >
+		</div>
+		<div class="redBlock">12
+			<img src="ladder.png" class="divs" width="48px" height="48px"  atl="12">
+		</div>
+		<div>13
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="13">
+		</div>
+		<div class="redBlock">14
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="14">
+		</div>
+		<div>15
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="15">
+		</div>
+		<div class="redBlock">16
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="16">
+		</div>
+		<div>17
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="17">
+		</div>
+		<div class="redBlock">18
+			<img src="snake.png" class="divs" width="48px" height="48px">
+		</div>
+		<div>19
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="19">
+		</div>
+		<div class="redBlock">20
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="20">
+		</div>
+		<div class="redBlock">21
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="21">
+		</div>
+		<div>22
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="22">
+		</div>
+		<div class="redBlock">23
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="23">
+		</div>
+		<div>24
+			<img src="ladder.png" class="divs" width="48px" height="48px"  atl="24">
+		</div>
+		<div class="redBlock">25
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="25">
+		</div>
+		<div>26
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="26">
+		</div>
+		<div class="redBlock">27
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="27">
+		</div>
+		<div>28
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="28">
+		</div>
+		<div class="redBlock">29
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="29">
+		</div>
+		<div>30
+			<img src="ladder.png" class="divs" width="48px" height="48px"  atl="30">
+		</div>
+		<div >31
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="31">
+		</div>
+		<div class="redBlock">32
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="32">
+		</div>
+		<div>33
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="33">
+		</div>
+		<div class="redBlock">34
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="34">
+		</div>
+		<div>35
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="35">
+		</div>
+		<div class="redBlock">36
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="36">
+		</div>
+		<div>37
+			<img src="snake.png" class="divs" width="48px" height="48px"  atl="37">
+		</div>
+		<div class="redBlock">38
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="38">
+		</div>
+		<div>39
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="39">
+		</div>
+		<div class="redBlock">40
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="40" >
+		</div>
+		<div class="redBlock">41
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="41">
+		</div>
+		<div >42
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="42">
+		</div>
+		<div class="redBlock">43
+			<img src="ladder.png" class="divs" width="48px" height="48px"  atl="43" >
+		</div>
+		<div>44
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="44">
+		</div>
+		<div class="redBlock">45
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="45">
+		</div>
+		<div>46
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="46">
+		</div>
+		<div class="redBlock">47
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="47">
+		</div>
+		<div>48
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="48">
+		</div>
+		<div class="redBlock">49
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="49">
+		</div>
+		<div>50
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="50">
+		</div>
+		<div>51
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="51">
+		</div>
+		<div class="redBlock">52
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="52">
+		</div>
+		<div>53
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="53">
+		</div>
+		<div class="redBlock">54
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="54">
+		</div>
+		<div>55
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="55">
+		</div>
+		<div class="redBlock">56
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="56">
+		</div>
+		<div>57
+			<img src="snake.png" class="divs" width="48px" height="48px">
+		</div>
+		<div class="redBlock">58
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="58">
+		</div>
+		<div>59
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="59">
+		</div>
+		<div class="redBlock">60
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="60">
+		</div>
+		<div class="redBlock">61
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="61">
+		</div>
+		<div >62
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="62">
+		</div>
+		<div class="redBlock">63
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="63">
+		</div>
+		<div>64
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="64">
+		</div>
+		<div class="redBlock">65
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="65">
+		</div>
+		<div>66
+			<img src="ladder.png" class="divs" width="48px" height="48px"  atl="66">
+		</div>
+		<div class="redBlock">67
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="67">
+		</div>
+		<div>68
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="68">
+		</div>
+		<div class="redBlock">69
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="69">
+		</div>
+		<div>70
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="70">
+		</div>
+		<div>71
+			<img src="snake.png" class="divs" width="48px" height="48px">
+		</div>
+		<div class="redBlock">72
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="72">
+		</div>
+		<div>73
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="73">
+		</div>
+		<div class="redBlock">74
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="74">
+		</div>
+		<div>75
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="75">
+		</div>
+		<div class="redBlock">76
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="76">
+		</div>
+		<div>77
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="77">
+		</div>
+		<div class="redBlock">78
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="78">
+		</div>
+		<div>79
+			<img src="snake.png" class="divs" width="48px" height="48px"  atl="79">
+		</div>
+		<div class="redBlock">80
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="80">
+		</div>
+		<div class="redBlock">81
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="81">
+		</div>
+		<div>82
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="82">
+		</div>
+		<div class="redBlock">83
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="83">
+		</div>
+		<div>84
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="84">
+		</div>
+		<div class="redBlock">85
+			<img src="ladder.png" class="divs" width="48px" height="48px"  atl="85">
+		</div>
+		<div>86
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="86">
+		</div>
+		<div class="redBlock">87
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="87">
+		</div>
+		<div>88
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="88">
+		</div>
+		<div class="redBlock">89
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="89">
+		</div>
+		<div>90
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="90">
+		</div>
+		<div >91
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="91">
+		</div>
+		<div class="redBlock">92
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="92">
+		</div>
+		<div>93
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="93">
+		</div>
+		<div class="redBlock">94
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="94">
+		</div>
+		<div>95
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="95">
+		</div>
+		<div class="redBlock">96
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="96">
+		</div>
+		<div>97
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="97">
+		</div>
+		<div class="redBlock">98
+			<img src="snake.png" class="divs" width="48px" height="48px">
+		</div>
+		<div>99
+			<img style="visibility: hidden;" class="divs" width="48px" height="48px"  atl="99">
+		</div>
+		<div>100
+			<img src="winner.gif" class="divs" width="48px" height="48px"  atl="100">
+		</div>
+
+	</div>
+	<button class="btn1-decor" onclick="diceG()">Play game!</button>
+	<button class="btnReload-decor" onclick="reloadGame()">Start again</button>
+</center>
+	
+</body>
+</html>
