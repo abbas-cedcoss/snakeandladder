@@ -13,7 +13,6 @@
 			padding: 8px;
 			margin-top: 10px;
 			outline: 0;
-			
 		}
 			.btnReload-decor{
 			border-radius: 0px 20px 0px;
@@ -29,7 +28,6 @@
 			color: black !important;
 			border: 1px solid black;
 			box-shadow: 0 0 5px black;
-
 		}
 		.btnReload-decor:hover{
 			background-color: white;
@@ -55,7 +53,6 @@
 		div
 		{
 			box-shadow: 0 0 10px #922e2e;
-
 		}
 
 	</style>
@@ -64,7 +61,6 @@
         var new_posP2 = 0; //for player two
 		function diceG()
 		{
-
 			var ran_no = Math.floor((Math.random()*4)+1); //For random num generation
 			alert("Dice value: "+ran_no);
 			var c_pos = document.getElementsByClassName("divs");
@@ -80,9 +76,7 @@
 				new_pos=new_pos- ran_no;
 				c_pos[new_pos-1].src ="red.png"
 			}
-
 			else{
-
 			c_pos[new_pos-1].src = "red.png";
 			c_pos[new_pos-1].style.visibility="visible";
 			console.log("rand: "+ran_no);
@@ -99,7 +93,6 @@
 				}
 				else if(new_pos==12||new_pos==24|| new_pos==30||new_pos==43||new_pos==66||new_pos==85)
 				{
-					
 					var v = new_pos+ran_no;
 					console.log("some"+v);
 					c_pos[(new_pos+ran_no)-1].src="red.png";
